@@ -1,8 +1,8 @@
 import React from 'react'
 import Square from './Square'
-
+console.log("Board.js")
 const boardStyle={
-border: '3px solid rebeccapurple',
+border: '8px solid rebeccapurple',
 borderRadius: '10px',
 width: '125px',
 height: '125px',

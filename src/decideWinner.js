@@ -1,4 +1,5 @@
 const decideWinner= (sqr) =>{
+  console.log("decideWinner.js")
     let winner='';
     let flag1=false;
     let flag2=false;
@@ -17,11 +18,11 @@ const decideWinner= (sqr) =>{
       const [a,b,c]=winCombo[i]
       if(!(sqr[a] && sqr[b] && sqr[c]))
       {
-          flag1=true;
+        flag1=true;
       }
       if(sqr[a] && sqr[a]===sqr[b] && sqr[a]===sqr[c])
         {
-            flag2=true;
+          flag2=true;
          winner= sqr[a]
         }
       
@@ -36,7 +37,7 @@ const decideWinner= (sqr) =>{
     }
   else
   {
-      return "no one"
+    return "no one"
   }
 
 }

@@ -6,6 +6,7 @@ const buttonStyle={
     fontWeight: '700',
     cursor:'pointer',
 }
+console.log("Square.js")
 const square= (props) => (
 <button style={buttonStyle} onClick={props.onClick}>{props.value}</button>
 )
