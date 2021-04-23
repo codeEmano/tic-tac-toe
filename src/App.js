@@ -1,45 +1,67 @@
 import Game from './Game'
-//import {useState} from 'react'
+import {useState} from 'react'
 function App() {
-  /*const [p1,setP]=useState("");
-  const [p2,setP]=useState("");
-  const [p1Choice,setP]=useState("");
-  const [p2Choice,setP]=useState("")
- handleChange= (e) => {
-  const {name,value}=e.target;
-  setP({[name]:value})
+  const [p1,setP1]=useState("");
+  const [p2,setP2]=useState("");
+  const [p1Choice, setp1Choice] = useState('o');
+  const [p2Choice, setp2Choice] = useState('o');
+  const [status, setstatus] = useState(false);
+ const handleChange1= (e) => {
+  const {value}=e.target;
+  console.log(value);
+  setP1(value)
  }
- handleSubmit= () =>
+ const handleChange2= (e) => {
+  const {value}=e.target;
+  console.log(value);
+  setP2(value)
+ }
+ const handleChoiceChange1 =(e) =>{
+   console.log(e.target );
+   setp1Choice(e.target.value)
+ }
+ const handleChoiceChange2 =(e) =>{
+   console.log(e.target.value);
+  setp2Choice(e.target.value)
+}
+ const handleSubmit= () =>
  {
-   <Game p1={p1} p2={p2} p1Choice={p1Choice} p2Choice={p2Choice}/>
+  if(p1.length===0 || p2.length===0)
+  {
+    alert("Enter a valid Player name");
+    return;
+  }
+  setstatus(true);
  }
-  return (
-    <form onSubmit={handleSubmit}>
-      <label>Player1 name:</label> <input type="text" name="p1" value={p1}
-      onChange={handleChange} />
-      <br />
-      <label>Player1 choice:</label>  
-      <select value={p1Choice} onChange={handleChange} name="p1Choice">
+  return <>
+      {status ? <Game p1={p1} p2={p2} 
+      p1Choice={p1Choice} p2Choice={p2Choice}/> : <form onSubmit={handleSubmit}>
+      <label>Player 1 name:</label> <input type="text" name="p1" value={p1}
+      onChange={handleChange1} required/>
+      <br/>
+      <br/>
+      <label>Player 1 choice:</label>  
+      <select value={p1Choice} onChange={handleChoiceChange1}>
+        <option value='o' selected>o</option>
         <option value='x'>x</option>
-        <option value='o'>o</option>
-      </select>
+      </select> 
       <br />
       <br />
-      <label>Player2 name:</label> <input type="text" name="p2" value={p2} 
-      onChange={handleChange} />
+      <hr/>
+      <label>Player 2 name:</label> <input type="text" name="p2" value={p2} 
+      onChange={handleChange2} />
       <br />
-      <label>Player2 choice:</label>
-      <select value={p2Choice} onChange={handleChange} name="p2Choice">
+      <br/>
+       <label>Player 2 choice:</label>
+      <select value={p2Choice} onChange={handleChoiceChange2}>
+      <option value='o' selected>o</option>
         <option value='x'>x</option>
-        <option value='o'>o</option>
-      </select>
-      <button type="submit">Submit</button>
-    </form>
-  );*/
-  return <div>
-    <Game />
-    {console.log("App.js")}
-  </div>
+      </select> 
+      <br/>
+      <br/>
+      <button type="button" onClick={handleSubmit}>Play!</button> 
+      </form>}
+  </>;
 }
 
 export default App;

@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import Board from './Board'
 import decideWinner from './decideWinner'
-const Game= (/*props*/) => {
+const Game= ({p1,p2,p1Choice,p2Choice}) => {
     const myStyle=
     {
         fontFamily:'cursive',
@@ -16,7 +16,7 @@ const Game= (/*props*/) => {
         {
             return
         }
-        cpy[i]=p1Turn ? 'x' : 'o'
+        cpy[i]=p1Turn ? p1Choice : p2Choice;
         setBrd(cpy)
         setUser(!p1Turn)
     }
@@ -24,6 +24,8 @@ const Game= (/*props*/) => {
         <p align='center'><button style={myStyle} 
          onClick={() => setBrd(Array(9).fill(null))}>
             New Game</button>
+            <br/><br/>
+            {p1}:{p1Choice} <br /> <br/>{p2}:{p2Choice}
         </p>
     )
     return (
@@ -31,7 +33,8 @@ const Game= (/*props*/) => {
      {console.log("Game.js")}
         <Board squares={brd} onClick={handleClick}/>
      <p align='center' style={myStyle}>
-     {winner ? 'Winner is : '+winner : 'Next chance: '+(p1Turn ? 'x' : 'o')}
+     {winner ? 'Winner is : '+(winner===p1Choice? p1 : 
+     winner===p2Choice ? p2: 'no one') : 'Next chance: '+(p1Turn ? p1 : p2)}
      </p>
      {newGame()}
 </div>)
