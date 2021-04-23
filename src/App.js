@@ -31,6 +31,11 @@ function App() {
     alert("Enter a valid Player name");
     return;
   }
+  if(p1Choice===p2Choice)
+  {
+    alert('Both players should take differen options.');
+    return
+  }
   setstatus(true);
  }
   return <>
